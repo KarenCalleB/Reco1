@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>680.8,848</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>680.8,928</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>LogIni_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -97,12 +97,12 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Nueva Carpeta Log" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_4" Path="[in_StrPathLogFile+&quot;\&quot; +Now.ToString(&quot;/yyyy/MM/dd&quot;).Replace(&quot;/&quot;,&quot;\&quot;)]" />
-          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_StrPathLogFile+&quot;\&quot;+Now.ToString(&quot;/yyyy/MM/dd&quot;).Replace(&quot;/&quot;,&quot;\&quot;)+&quot;\Logs.xlsx&quot;]" DisplayName="Plantilla Log" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="CopyFile_3" Overwrite="False" Path="Data\Logs.xlsx" />
+          <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Nueva Carpeta Log" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_4" Path="[in_StrPathLogFile+&quot;\&quot; +Now.ToString(&quot;yyyy/MM/dd&quot;).Replace(&quot;/&quot;,&quot;\&quot;)]" />
+          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_StrPathLogFile+&quot;\&quot;+Now.ToString(&quot;yyyy/MM/dd&quot;).Replace(&quot;/&quot;,&quot;\&quot;)+&quot;\Logs.xlsx&quot;]" DisplayName="Plantilla Log" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="CopyFile_3" Overwrite="False" Path="Data\Logs.xlsx" />
         </Sequence>
       </If.Else>
     </If>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Ingresar Logs en archivo local" sap:VirtualizedContainerService.HintSize="619.2,197.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" Visible="False" WorkbookPath="[in_StrPathLogFile+&quot;\&quot;+Now.ToString(&quot;/yyyy/MM/dd&quot;).Replace(&quot;/&quot;,&quot;\&quot;)+&quot;\Logs.xlsx&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Ingresar Logs en archivo local" sap:VirtualizedContainerService.HintSize="619.2,197.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" Visible="False" WorkbookPath="[in_StrPathLogFile+&quot;\&quot;+Now.ToString(&quot;yyyy/MM/dd&quot;).Replace(&quot;/&quot;,&quot;\&quot;)+&quot;\Logs.xlsx&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
