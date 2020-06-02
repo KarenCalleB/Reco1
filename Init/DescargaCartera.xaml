@@ -5,7 +5,7 @@
     <x:Property Name="inStrRutaMaestraClientes" Type="InArgument(x:String)" />
     <x:Property Name="inStrFormatoCartera" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1238.4,2490.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>495.2,1929.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
   <TextExpression.NamespacesForImplementation>
@@ -39,7 +39,7 @@
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
     </scg1:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Descarga cartera" sap:VirtualizedContainerService.HintSize="1218.4,2430.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Descarga cartera" sap:VirtualizedContainerService.HintSize="475.2,1709.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd4:DataTable" Name="vdtCartera" />
       <Variable x:TypeArguments="x:Int32" Name="vIntContadorCartera" />
@@ -55,7 +55,7 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg1:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch sap2010:Annotation.AnnotationText="Try para cuando ocurrio problema al descargar cartera, reintenta y ya habia borrado el archivo en el anterior intento" DisplayName="Try Catch  borrar archivo de cartera anterior" sap:VirtualizedContainerService.HintSize="1176.8,144.8" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+    <TryCatch sap2010:Annotation.AnnotationText="Try para cuando ocurrio problema al descargar cartera, reintenta y ya habia borrado el archivo en el anterior intento" DisplayName="Try Catch  borrar archivo de cartera anterior" sap:VirtualizedContainerService.HintSize="433.6,144.8" sap2010:WorkflowViewState.IdRef="TryCatch_7">
       <sap:WorkflowViewStateService.ViewState>
         <scg1:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -83,24 +83,109 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:UiElementExists DisplayName="Icono de buscar en menu ppal" Exists="[vBooMenu]" sap:VirtualizedContainerService.HintSize="1176.8,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
-      <ui:UiElementExists.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="5b5cdefd96dfca6200e14df1d86ce921" Selector="&lt;wnd app='epicor.exe' ctrlname='ShellMenuForm' /&gt;&lt;wnd ctrlname='shellControlHost' /&gt;&lt;wnd cls='HwndWrapper*' title='elementHost1' /&gt;&lt;ctrl name='elementHost1' role='pane' /&gt;&lt;ctrl automationid='ButtonImage' idx='13' role='graphic' /&gt;" TimeoutMS="60000" WaitForReady="INTERACTIVE" />
-      </ui:UiElementExists.Target>
-    </ui:UiElementExists>
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'menu ppal de Epicor'" sap:VirtualizedContainerService.HintSize="1176.8,52.8" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="0769fe0fdab8728b4731ef6f51f05a8e" Selector="&lt;wnd app='epicor.exe' ctrlname='ShellMenuForm' /&gt;">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,200" sap2010:WorkflowViewState.IdRef="Sequence_28">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg1:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:UiElementExists DisplayName="Icono de buscar en menu ppal" Exists="[vBooMenu]" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <ui:UiElementExists.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="5b5cdefd96dfca6200e14df1d86ce921" Selector="&lt;wnd app='epicor.exe' ctrlname='ShellMenuForm' /&gt;&lt;wnd ctrlname='shellControlHost' /&gt;&lt;wnd cls='HwndWrapper*' title='elementHost1' /&gt;&lt;ctrl name='elementHost1' role='pane' /&gt;&lt;ctrl automationid='ButtonImage' idx='13' role='graphic' /&gt;" TimeoutMS="60000" WaitForReady="INTERACTIVE" />
+            </ui:UiElementExists.Target>
+          </ui:UiElementExists>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg1:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'menu ppal de Epicor'" sap:VirtualizedContainerService.HintSize="433.6,696" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="0769fe0fdab8728b4731ef6f51f05a8e" Selector="&lt;wnd app='epicor.exe' ctrlname='ShellMenuForm' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Ingreso al menu indicado" sap:VirtualizedContainerService.HintSize="562.4,744" sap2010:WorkflowViewState.IdRef="Sequence_27">
+          <Sequence DisplayName="Ingreso al menu indicado" sap:VirtualizedContainerService.HintSize="375.2,548.8" sap2010:WorkflowViewState.IdRef="Sequence_27">
             <sap:WorkflowViewStateService.ViewState>
               <scg1:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg1:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Company Normal" sap:VirtualizedContainerService.HintSize="333.6,68.8" sap2010:WorkflowViewState.IdRef="Sequence_29">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg1:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Company'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="1796576b9088f69848a5dc3c22b2af53" Selector="&lt;wnd ctrlname='shellControlHost' /&gt;&lt;wnd cls='HwndWrapper*' title='elementHost1' /&gt;&lt;ctrl name='elementHost1' role='pane' /&gt;&lt;ctrl automationid='tbCompanyPlant' /&gt;&lt;ctrl automationid='lnkCompanyPlant' /&gt;" WaitForReady="INTERACTIVE" />
+                </ui:Click.Target>
+              </ui:Click>
+              <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'list item'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_13" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="0deb8c91cc41d1af9c22f82588f62c07" Selector="&lt;wnd app='epicor.exe' cls='HwndWrapper*' idx='1' /&gt;&lt;ctrl idx='3' name='IceShell.CompanyData' role='list item' /&gt;" WaitForReady="INTERACTIVE" />
+                </ui:Click.Target>
+              </ui:Click>
+              <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'text  NETCAP'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_14" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="137e59915117536a143fcb30ff3c73a4" Selector="&lt;wnd app='epicor.exe' cls='HwndWrapper*' idx='1' /&gt;&lt;ctrl idx='1' name='IceShell.PlantData' role='list item' /&gt;&lt;ctrl name='C.I. G&amp;amp;LINGERIE S.A.S.' role='text' /&gt;" WaitForReady="INTERACTIVE" />
+                </ui:Click.Target>
+              </ui:Click>
+              <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'graphic  ButtonImage'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_15" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="649aa03a91abfa68feebed11d67a862d" Selector="&lt;wnd app='epicor.exe' cls='HwndWrapper*' idx='1' /&gt;&lt;ctrl automationid='ButtonImage' idx='2' role='graphic' /&gt;" WaitForReady="INTERACTIVE" />
+                </ui:Click.Target>
+              </ui:Click>
+            </Sequence>
             <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Buscar'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
@@ -113,38 +198,38 @@
                 </ui:CursorPosition>
               </ui:Click.CursorPosition>
               <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="3e247e21b9125cd3b60693e50d9ad368" Selector="&lt;wnd ctrlname='shellControlHost' /&gt;&lt;wnd cls='HwndWrapper*' title='elementHost1' /&gt;&lt;ctrl name='elementHost1' role='pane' /&gt;&lt;ctrl automationid='ButtonImage' idx='13' role='graphic' /&gt;" WaitForReady="INTERACTIVE" />
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="633549a9fe2a17139ebaf66e109049a3" Selector="&lt;wnd ctrlname='shellControlHost' /&gt;&lt;wnd cls='HwndWrapper*' title='elementHost1' /&gt;&lt;ctrl name='elementHost1' role='pane' /&gt;&lt;ctrl automationid='ButtonImage' idx='12' role='graphic' /&gt;" WaitForReady="INTERACTIVE" />
               </ui:Click.Target>
             </ui:Click>
             <ui:RetryScope DisplayName="Retry Scope escribir modulo a ingresar" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:05">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
-                  <Sequence sap:VirtualizedContainerService.HintSize="479.2,254.4" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                  <Sequence DisplayName="Modulo a ingresar" sap:VirtualizedContainerService.HintSize="475.2,812" sap2010:WorkflowViewState.IdRef="Sequence_25">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg1:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg1:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+                    <TryCatch DisplayName="Try Catch escribir opcion a buscar" sap:VirtualizedContainerService.HintSize="433.6,610.4" sap2010:WorkflowViewState.IdRef="TryCatch_6">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg1:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <TryCatch.Try>
-                        <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into 'editable text'" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_4" SendWindowMessages="False" SimulateType="False" Text="[inStrOpcionCartera+ &quot;[k(enter)]&quot;]">
+                        <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into 'editable text'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_4" SendWindowMessages="False" SimulateType="False" Text="[inStrOpcionCartera+ &quot;[k(enter)]&quot;]">
                           <ui:TypeInto.Target>
                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="ce27f91165fe0ce42be3639253ccef9f" Selector="&lt;wnd app='epicor.exe' ctrlname='ShellMenuForm' /&gt;&lt;wnd ctrlname='shellControlHost' /&gt;&lt;wnd cls='HwndWrapper*' title='elementHost1' /&gt;&lt;ctrl name='elementHost1' role='pane' /&gt;&lt;ctrl automationid='SearchTextBox' /&gt;" WaitForReady="INTERACTIVE" />
                           </ui:TypeInto.Target>
                         </ui:TypeInto>
                       </TryCatch.Try>
                       <TryCatch.Catches>
-                        <Catch x:TypeArguments="s1:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_6">
+                        <Catch x:TypeArguments="s1:Exception" sap:VirtualizedContainerService.HintSize="400,445.6" sap2010:WorkflowViewState.IdRef="Catch`1_6">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg1:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
@@ -152,51 +237,35 @@
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="s1:Exception" Name="exception" />
                             </ActivityAction.Argument>
-                            <Sequence sap:VirtualizedContainerService.HintSize="376,66" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                            <Sequence DisplayName="Reintento escribir opcion" sap:VirtualizedContainerService.HintSize="375.2,375.2" sap2010:WorkflowViewState.IdRef="Sequence_24">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg1:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window ''" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="WindowScope_5" InformativeScreenshot="61eaea708e5636c13202fd234336fc69" Selector="&lt;wnd app='epicor.exe' ctrlname='ShellMenuForm' /&gt;">
-                                <ui:WindowScope.Body>
-                                  <ActivityAction x:TypeArguments="x:Object">
-                                    <ActivityAction.Argument>
-                                      <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                    </ActivityAction.Argument>
-                                    <Sequence sap:VirtualizedContainerService.HintSize="375.2,200" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        </scg1:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'graphic  ButtonImage'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
-                                        <ui:Click.CursorPosition>
-                                          <ui:CursorPosition Position="Center">
-                                            <ui:CursorPosition.OffsetX>
-                                              <InArgument x:TypeArguments="x:Int32" />
-                                            </ui:CursorPosition.OffsetX>
-                                            <ui:CursorPosition.OffsetY>
-                                              <InArgument x:TypeArguments="x:Int32" />
-                                            </ui:CursorPosition.OffsetY>
-                                          </ui:CursorPosition>
-                                        </ui:Click.CursorPosition>
-                                        <ui:Click.Target>
-                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="3e247e21b9125cd3b60693e50d9ad368" Selector="&lt;wnd ctrlname='shellControlHost' /&gt;&lt;wnd cls='HwndWrapper*' title='elementHost1' /&gt;&lt;ctrl name='elementHost1' role='pane' /&gt;&lt;ctrl automationid='ButtonImage' idx='13' role='graphic' /&gt;" WaitForReady="INTERACTIVE" />
-                                        </ui:Click.Target>
-                                      </ui:Click>
-                                    </Sequence>
-                                  </ActivityAction>
-                                </ui:WindowScope.Body>
+                              <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Buscar'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_11" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                                <ui:Click.CursorPosition>
+                                  <ui:CursorPosition Position="Center">
+                                    <ui:CursorPosition.OffsetX>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetX>
+                                    <ui:CursorPosition.OffsetY>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetY>
+                                  </ui:CursorPosition>
+                                </ui:Click.CursorPosition>
+                                <ui:Click.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="c5374a11397dda586e700fb8e2ffe54e" Selector="&lt;wnd ctrlname='shellControlHost' /&gt;&lt;wnd cls='HwndWrapper*' title='elementHost1' /&gt;&lt;ctrl name='elementHost1' role='pane' /&gt;&lt;ctrl automationid='ButtonImage' idx='12' role='graphic' /&gt;" WaitForReady="INTERACTIVE" />
+                                </ui:Click.Target>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg1:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                              </ui:WindowScope>
-                              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into 'editable text'" EmptyField="False" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_5" SendWindowMessages="False" SimulateType="False" Text="[inStrOpcionCartera+ &quot;[k(enter)]&quot;]">
+                              </ui:Click>
+                              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into 'opcion cartera'" EmptyField="False" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_5" SendWindowMessages="False" SimulateType="False" Text="[inStrOpcionCartera+ &quot;[k(enter)]&quot;]">
                                 <ui:TypeInto.Target>
                                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="ce27f91165fe0ce42be3639253ccef9f" Selector="&lt;wnd app='epicor.exe' ctrlname='ShellMenuForm' /&gt;&lt;wnd ctrlname='shellControlHost' /&gt;&lt;wnd cls='HwndWrapper*' title='elementHost1' /&gt;&lt;ctrl name='elementHost1' role='pane' /&gt;&lt;ctrl automationid='SearchTextBox' /&gt;" WaitForReady="INTERACTIVE" />
                                 </ui:TypeInto.Target>
@@ -206,7 +275,7 @@
                         </Catch>
                       </TryCatch.Catches>
                     </TryCatch>
-                    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text" sap:VirtualizedContainerService.HintSize="333.6,68.8" sap2010:WorkflowViewState.IdRef="GetValue_2">
+                    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text texto escrito" sap:VirtualizedContainerService.HintSize="433.6,68.8" sap2010:WorkflowViewState.IdRef="GetValue_2">
                       <ui:GetValue.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="&lt;wnd app='epicor.exe' ctrlname='ShellMenuForm' /&gt;&#xA;&lt;wnd ctrlname='shellControlHost' /&gt;&#xA;&lt;wnd cls='HwndWrapper*' title='elementHost1' /&gt;&#xA;&lt;ctrl name='elementHost1' role='pane' /&gt;&#xA;&lt;ctrl automationid='SearchTextBox' /&gt;" WaitForReady="INTERACTIVE" />
                       </ui:GetValue.Target>
@@ -249,12 +318,12 @@
       </ui:WindowScope.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg1:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WindowScope>
-    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Refrescar informacion'" sap:VirtualizedContainerService.HintSize="1176.8,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Refrescar informacion' RE06" sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
       <ui:Click.CursorPosition>
         <ui:CursorPosition Position="Center">
           <ui:CursorPosition.OffsetX>
@@ -269,7 +338,7 @@
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="d5844858aaa86868d0cfe710502dcdbb" Selector="&lt;wnd app='epicor.exe' ctrlname='MainController' /&gt;&lt;wnd aaname='DockTop' cls='WindowsForms10.Window.*' idx='3' /&gt;&lt;ctrl name='DockTop' role='grouping' /&gt;&lt;ctrl idx='2' name='Toolbar' role='tool bar' /&gt;&lt;ctrl name='Refresh' role='push button' /&gt;" WaitForReady="INTERACTIVE" />
       </ui:Click.Target>
     </ui:Click>
-    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'OK ver info cartera clientes'" sap:VirtualizedContainerService.HintSize="1176.8,107.2" sap2010:WorkflowViewState.IdRef="Click_10" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'OK ver info cartera clientes' RE07" sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Click_10" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
       <ui:Click.CursorPosition>
         <ui:CursorPosition Position="Center">
           <ui:CursorPosition.OffsetX>
@@ -284,12 +353,12 @@
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="363d49c498ff8cbf5702089fbffdebd9" Selector="&lt;wnd app='epicor.exe' ctrlname='BaseForm' /&gt;&lt;wnd ctrlname='pnlMain' /&gt;&lt;wnd ctrlname='grpButtons' /&gt;&lt;wnd ctrlname='btn0' /&gt;&lt;ctrl name='OK' role='push button' /&gt;" WaitForReady="INTERACTIVE" />
       </ui:Click.Target>
     </ui:Click>
-    <ui:UiElementExists DisplayName="Element Exists 'Epicor.exe  Parameters'" Exists="[vBooCarteraClientes]" sap:VirtualizedContainerService.HintSize="1176.8,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+    <ui:UiElementExists DisplayName="Element Exists 'esperar a que cargue cartera'" Exists="[vBooCarteraClientes]" sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
       <ui:UiElementExists.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" InformativeScreenshot="15b56eb4e8a47c73730570593affbc33" TimeoutMS="60000" WaitForReady="INTERACTIVE" />
       </ui:UiElementExists.Target>
     </ui:UiElementExists>
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Menu ppal de epicor" sap:VirtualizedContainerService.HintSize="1176.8,52.8" sap2010:WorkflowViewState.IdRef="WindowScope_3" InformativeScreenshot="e713ccc961d604bd837dc3e8ededc250" Selector="&lt;wnd app='epicor.exe' ctrlname='MainController' /&gt;">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Menu ppal de epicor'" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="WindowScope_3" InformativeScreenshot="e713ccc961d604bd837dc3e8ededc250" Selector="&lt;wnd app='epicor.exe' ctrlname='MainController' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -363,10 +432,10 @@
         </scg1:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WindowScope>
-    <Sequence DisplayName="Paso RE09 DSD CORG -&gt; filtrado de informacion de interes" sap:VirtualizedContainerService.HintSize="1176.8,1378.4" sap2010:WorkflowViewState.IdRef="Sequence_19">
+    <Sequence DisplayName="Paso RE09 DSD CORG -&gt; filtrado de informacion de interes" sap:VirtualizedContainerService.HintSize="433.6,68.8" sap2010:WorkflowViewState.IdRef="Sequence_19">
       <sap:WorkflowViewStateService.ViewState>
         <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg1:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -383,7 +452,7 @@
           <InArgument x:TypeArguments="s1:String[]">[vStrCartera.Split({Environment.NewLine},StringSplitOptions.None)]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:BuildDataTable DataTable="[vdtCartera]" DisplayName="Build Data Table informacion de la cartera" sap:VirtualizedContainerService.HintSize="1135.2,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Legal_x0020_Number&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Fecha_x0020_Inicial&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Fecha_x0020_vcto&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;ID&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Nombre&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;NIT&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Grupo&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Total&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Inv_x0020_Number&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+      <ui:BuildDataTable DataTable="[vdtCartera]" DisplayName="Build Data Table informacion de la cartera" sap:VirtualizedContainerService.HintSize="1135.2,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Legal_x0020_Number&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Fecha_x0020_Inicial&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Fecha_x0020_vcto&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ID&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Nombre&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NIT&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Grupo&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Total&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Inv_x0020_Number&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
       <Assign DisplayName="Assign inicializo contador para el arreglo de cartera" sap:VirtualizedContainerService.HintSize="1135.2,60" sap2010:WorkflowViewState.IdRef="Assign_6">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Int32">[vIntContadorCartera]</OutArgument>

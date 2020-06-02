@@ -7,7 +7,7 @@
     <x:Property Name="in_dtFiltradaCuentas" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="in_dtArchivoFiltrado" Type="InArgument(sd:DataTable)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1056.8,2415.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1057.6,1534.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
   <TextExpression.NamespacesForImplementation>
@@ -49,10 +49,9 @@
       <AssemblyReference>System.Configuration.Install</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Validacion estructura y verificacion lineas reportadas" sap:VirtualizedContainerService.HintSize="1036.8,2275.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+  <Sequence DisplayName="Validacion estructura y verificacion lineas reportadas" sap:VirtualizedContainerService.HintSize="1037.6,1474.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
     <Sequence.Variables>
       <Variable x:TypeArguments="s1:DateTime" Name="vDTfecha" />
       <Variable x:TypeArguments="x:Boolean" Name="vBooLineaReportada" />
@@ -63,71 +62,437 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg1:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[in_dt001]" DisplayName="For Each Row tabla leida de excel" sap:VirtualizedContainerService.HintSize="995.2,2182.4" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
-      <ui:ForEachRow.Body>
-        <ActivityAction x:TypeArguments="sd:DataRow">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
-          </ActivityAction.Argument>
-          <Sequence sap:VirtualizedContainerService.HintSize="945.6,2033.6" sap2010:WorkflowViewState.IdRef="Sequence_146">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:Boolean" Name="vBooValidacion" />
-            </Sequence.Variables>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg1:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Assign inicializo bool de linea reportada" sap:VirtualizedContainerService.HintSize="904,60" sap2010:WorkflowViewState.IdRef="Assign_119">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:Boolean">[vBooLineaReportada]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
-              </Assign.Value>
-            </Assign>
-            <Assign DisplayName="Assign inicializo la vble para esta fila" sap:VirtualizedContainerService.HintSize="904,60" sap2010:WorkflowViewState.IdRef="Assign_120">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:Boolean">[vBooValidacion]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-              </Assign.Value>
-            </Assign>
-            <Assign DisplayName="Assign inicializo excepcion para la fila" sap:VirtualizedContainerService.HintSize="904,60" sap2010:WorkflowViewState.IdRef="Assign_121">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[in_StrExcepcion]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">
-                  <Literal x:TypeArguments="x:String" Value="" />
-                </InArgument>
-              </Assign.Value>
-            </Assign>
-            <If Condition="[Split((row(0).ToString),&quot;;&quot;).Length=36]" DisplayName="If ¿archivo con 35 ;?" sap:VirtualizedContainerService.HintSize="904,712" sap2010:WorkflowViewState.IdRef="If_79">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg1:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <If.Then>
-                <TryCatch DisplayName="Try Catch validacion info relevante" sap:VirtualizedContainerService.HintSize="436.8,562.4" sap2010:WorkflowViewState.IdRef="TryCatch_20">
+    <If Condition="[in_dt001.Rows.Count&gt;1]" DisplayName="If ¿ya hay lineas?" sap:VirtualizedContainerService.HintSize="996,1381.6" sap2010:WorkflowViewState.IdRef="If_80">
+      <If.Then>
+        <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[in_dt001]" DisplayName="For Each Row tabla leida de excel" sap:VirtualizedContainerService.HintSize="618.4,1232" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+          <ui:ForEachRow.Body>
+            <ActivityAction x:TypeArguments="sd:DataRow">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Valido internamente" sap:VirtualizedContainerService.HintSize="568.8,1083.2" sap2010:WorkflowViewState.IdRef="Sequence_146">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Boolean" Name="vBooValidacion" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg1:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Assign inicializo bool de linea reportada" sap:VirtualizedContainerService.HintSize="527.2,60" sap2010:WorkflowViewState.IdRef="Assign_119">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Boolean">[vBooLineaReportada]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign inicializo la vble para esta fila" sap:VirtualizedContainerService.HintSize="527.2,60" sap2010:WorkflowViewState.IdRef="Assign_120">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Boolean">[vBooValidacion]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign inicializo excepcion para la fila" sap:VirtualizedContainerService.HintSize="527.2,60" sap2010:WorkflowViewState.IdRef="Assign_121">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[in_StrExcepcion]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">
+                      <Literal x:TypeArguments="x:String" Value="" />
+                    </InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[Split((row(0).ToString),&quot;;&quot;).Length=36]" DisplayName="If ¿archivo con 35 ;?" sap:VirtualizedContainerService.HintSize="527.2,262.4" sap2010:WorkflowViewState.IdRef="If_79">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg1:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg1:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <TryCatch.Try>
-                    <Sequence DisplayName="Validacion informacion relevante" sap:VirtualizedContainerService.HintSize="241.6,331.2" sap2010:WorkflowViewState.IdRef="Sequence_138">
+                  <If.Then>
+                    <TryCatch DisplayName="Try Catch validacion info relevante" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_20">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg1:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <TryCatch.Try>
+                        <Sequence DisplayName="Validacion informacion relevante" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_138">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg1:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If Condition="[IsNumeric((Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(1)))]" DisplayName="If ¿Cuenta es no numerica?" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_71">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg1:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Then>
+                              <ui:Comment sap:VirtualizedContainerService.HintSize="333.6,56" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Cuenta reportada es numerica" />
+                            </If.Then>
+                            <If.Else>
+                              <Sequence DisplayName="Reportar cuenta no numerica" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_134">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg1:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign DisplayName="Assign hubo error en la infor" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_122">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Boolean">[vBooValidacion]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign DisplayName="Assign se reporta el error especifico" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_123">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[in_StrExcepcion]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">Cuenta no numérica</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                          <If Condition="[IsNumeric((Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(10)))]" DisplayName="If ¿valor pagado es no numerico?" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_74">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg1:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Else>
+                              <Sequence DisplayName="Validacion pago" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_136">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg1:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If Condition="[(Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(10))=&quot;&quot;]" DisplayName="If columna pago vacia" sap:VirtualizedContainerService.HintSize="754.4,552" sap2010:WorkflowViewState.IdRef="If_73">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg1:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Else>
+                                    <Sequence DisplayName="Pago no numérico" sap:VirtualizedContainerService.HintSize="610.4,402.4" sap2010:WorkflowViewState.IdRef="Sequence_135">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg1:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="Assign_124">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Boolean">[vBooValidacion]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <If Condition="[in_StrExcepcion=&quot;&quot;]" sap:VirtualizedContainerService.HintSize="568.8,209.6" sap2010:WorkflowViewState.IdRef="If_72">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg1:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <If.Then>
+                                          <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_125">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[in_StrExcepcion]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">Valor consignado no es numerico</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </If.Then>
+                                        <If.Else>
+                                          <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_126">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[in_StrExcepcion]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[in_StrExcepcion+";"+"Valor consignado no es numerico"]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </If.Else>
+                                      </If>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                          <If Condition="[IsNumeric((Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(16)))]" DisplayName="If ¿NIT  es numérico?" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_75">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg1:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Else>
+                              <Sequence sap:VirtualizedContainerService.HintSize="304,252.8" sap2010:WorkflowViewState.IdRef="Sequence_137">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg1:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_127">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Boolean">[vBooValidacion]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_128">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[in_StrExcepcion]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">NIT no es numerico</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                        </Sequence>
+                      </TryCatch.Try>
+                      <TryCatch.Catches>
+                        <Catch x:TypeArguments="s1:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_20">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg1:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ActivityAction x:TypeArguments="s1:Exception">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="s1:Exception" Name="exception" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Fila tiene esctructura incorrecta" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_139">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg1:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_129">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[vBooValidacion]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_130">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[in_StrExcepcion]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">excepción: Estructura de linea incorrecta</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </ActivityAction>
+                        </Catch>
+                      </TryCatch.Catches>
+                    </TryCatch>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap2010:Annotation.AnnotationText="no tiene 35 ; que permite identificar cada campo" DisplayName="Fila con estructura incorrecta" sap:VirtualizedContainerService.HintSize="200,112.8" sap2010:WorkflowViewState.IdRef="Sequence_147">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg1:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="Assign hubo error en la infor" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_132">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[vBooValidacion]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign DisplayName="Assign se reporta el error especifico" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_133">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[in_StrExcepcion]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">["Fila en archivo multicash cambio su estructura: debe tener 35 ;"]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+                <If Condition="[vBooValidacion=False And Not in_StrExcepcion=&quot;&quot;]" DisplayName="If ¿hubo excepcion en la fila?" sap:VirtualizedContainerService.HintSize="527.2,388" sap2010:WorkflowViewState.IdRef="If_78">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg1:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence DisplayName="Reportar error en excel multicash" sap:VirtualizedContainerService.HintSize="241.6,208" sap2010:WorkflowViewState.IdRef="Sequence_143">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg1:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;&quot;, &quot;&quot;, &quot;&quot;,in_StrHoja,&quot;excepción: &quot;+in_StrExcepcion,&quot;&quot;}]" DataTable="[in_dtFiltradaCuentas]" DisplayName="Formar tabla " sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="AddDataRow_24" />
+                      <TryCatch DisplayName="Try Catch Escribir error ocurrido" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_21">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg1:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <TryCatch.Try>
+                          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_17" Visible="False" WorkbookPath="[in_StrArchivoMulticash]">
+                            <ui:ExcelApplicationScope.Body>
+                              <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                                </ActivityAction.Argument>
+                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,243.2" sap2010:WorkflowViewState.IdRef="Sequence_140">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg1:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Red]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_17" Range="[&quot;B&quot;+(in_dt001.Rows.IndexOf(row)+1).ToString]" SheetName="[in_StrHoja]" />
+                                  <ui:ExcelWriteCell Cell="[&quot;B&quot;+(in_dt001.Rows.IndexOf(row)+1).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_17" SheetName="[in_StrHoja]" Text="[in_StrExcepcion]" />
+                                </Sequence>
+                              </ActivityAction>
+                            </ui:ExcelApplicationScope.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg1:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:ExcelApplicationScope>
+                        </TryCatch.Try>
+                        <TryCatch.Catches>
+                          <Catch x:TypeArguments="s1:Exception" sap:VirtualizedContainerService.HintSize="400,139.2" sap2010:WorkflowViewState.IdRef="Catch`1_21">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg1:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ActivityAction x:TypeArguments="s1:Exception">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="s1:Exception" Name="exception" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="No se ha cerrado excel" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_142">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg1:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="KillProcess_9" ProcessName="EXCEL.EXE" />
+                                <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_18" Visible="False" WorkbookPath="[in_StrArchivoMulticash]">
+                                  <ui:ExcelApplicationScope.Body>
+                                    <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                                      </ActivityAction.Argument>
+                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,243.2" sap2010:WorkflowViewState.IdRef="Sequence_141">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg1:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Red]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_18" Range="[&quot;C&quot;+(in_dt001.Rows.IndexOf(row)+1).ToString]" SheetName="[in_StrHoja]" />
+                                        <ui:ExcelWriteCell Cell="[&quot;C&quot;+(in_dt001.Rows.IndexOf(row)+1).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_18" SheetName="[in_StrHoja]" Text="[in_StrExcepcion]" />
+                                      </Sequence>
+                                    </ActivityAction>
+                                  </ui:ExcelApplicationScope.Body>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg1:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:ExcelApplicationScope>
+                              </Sequence>
+                            </ActivityAction>
+                          </Catch>
+                        </TryCatch.Catches>
+                      </TryCatch>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence DisplayName="Buscar si la linea ya fue reportada" sap:VirtualizedContainerService.HintSize="241.6,238.4" sap2010:WorkflowViewState.IdRef="Sequence_145">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg1:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg1:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If Condition="[IsNumeric((Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(1)))]" DisplayName="If ¿Cuenta es no numerica?" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_71">
+                      <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[in_dtArchivoFiltrado]" DisplayName="For Each Row archivo bancos organizado" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ForEachRow_7">
+                        <ui:ForEachRow.Body>
+                          <ActivityAction x:TypeArguments="sd:DataRow">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="raw" />
+                            </ActivityAction.Argument>
+                            <If Condition="[raw(0).ToString=Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(1) and convert.ToDouble(raw(1).ToString)=convert.ToDouble(Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(10)) and raw(2).ToString=Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(3) and raw(3).ToString=Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(16)]" DisplayName="If ¿se encuentra en archivo organizado info fila de multicash" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_76">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg1:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If.Then>
+                                <Sequence DisplayName="Linea ya fue agregada" sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_144">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg1:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign DisplayName="Assign linea ya reportada" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_131">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Boolean">[vBooLineaReportada]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <ui:Break sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="Break_2" />
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <ui:Comment sap:VirtualizedContainerService.HintSize="334,55" sap2010:WorkflowViewState.IdRef="Comment_5" Text="// Linea ya existente" />
+                              </If.Else>
+                            </If>
+                          </ActivityAction>
+                        </ui:ForEachRow.Body>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg1:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:ForEachRow>
+                      <If Condition="[vBooLineaReportada=False]" DisplayName="If ¿linea de multicash no ha sido reportada?" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_77">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg1:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -135,386 +500,29 @@
                           </scg1:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <If.Then>
-                          <ui:Comment sap:VirtualizedContainerService.HintSize="333.6,56" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Cuenta reportada es numerica" />
+                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(1),Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(10), Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(3), Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(16),in_StrHoja,&quot;&quot;,&quot;&quot;}]" DataTable="[in_dtFiltradaCuentas]" DisplayName="Agrega info a tabla organizada" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="AddDataRow_25" />
                         </If.Then>
                         <If.Else>
-                          <Sequence DisplayName="Reportar cuenta no numerica" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_134">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg1:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <Assign DisplayName="Assign hubo error en la infor" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_122">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:Boolean">[vBooValidacion]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
-                              </Assign.Value>
-                            </Assign>
-                            <Assign DisplayName="Assign se reporta el error especifico" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_123">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:String">[in_StrExcepcion]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:String">Cuenta no numérica</InArgument>
-                              </Assign.Value>
-                            </Assign>
-                          </Sequence>
-                        </If.Else>
-                      </If>
-                      <If Condition="[IsNumeric((Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(10)))]" DisplayName="If ¿valor pagado es no numerico?" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_74">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg1:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <If.Else>
-                          <Sequence DisplayName="Validacion pago" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_136">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg1:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <If Condition="[(Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(10))=&quot;&quot;]" DisplayName="If columna pago vacia" sap:VirtualizedContainerService.HintSize="754.4,552" sap2010:WorkflowViewState.IdRef="If_73">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                </scg1:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <If.Else>
-                                <Sequence DisplayName="Pago no numérico" sap:VirtualizedContainerService.HintSize="610.4,402.4" sap2010:WorkflowViewState.IdRef="Sequence_135">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg1:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <Assign sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="Assign_124">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="x:Boolean">[vBooValidacion]</OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
-                                    </Assign.Value>
-                                  </Assign>
-                                  <If Condition="[in_StrExcepcion=&quot;&quot;]" sap:VirtualizedContainerService.HintSize="568.8,209.6" sap2010:WorkflowViewState.IdRef="If_72">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg1:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <If.Then>
-                                      <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_125">
-                                        <Assign.To>
-                                          <OutArgument x:TypeArguments="x:String">[in_StrExcepcion]</OutArgument>
-                                        </Assign.To>
-                                        <Assign.Value>
-                                          <InArgument x:TypeArguments="x:String">Valor consignado no es numerico</InArgument>
-                                        </Assign.Value>
-                                      </Assign>
-                                    </If.Then>
-                                    <If.Else>
-                                      <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_126">
-                                        <Assign.To>
-                                          <OutArgument x:TypeArguments="x:String">[in_StrExcepcion]</OutArgument>
-                                        </Assign.To>
-                                        <Assign.Value>
-                                          <InArgument x:TypeArguments="x:String">[in_StrExcepcion+";"+"Valor consignado no es numerico"]</InArgument>
-                                        </Assign.Value>
-                                      </Assign>
-                                    </If.Else>
-                                  </If>
-                                </Sequence>
-                              </If.Else>
-                            </If>
-                          </Sequence>
-                        </If.Else>
-                      </If>
-                      <If Condition="[IsNumeric((Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(16)))]" DisplayName="If ¿NIT  es numérico?" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_75">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg1:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <If.Else>
-                          <Sequence sap:VirtualizedContainerService.HintSize="304,252.8" sap2010:WorkflowViewState.IdRef="Sequence_137">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg1:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_127">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:Boolean">[vBooValidacion]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
-                              </Assign.Value>
-                            </Assign>
-                            <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_128">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:String">[in_StrExcepcion]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:String">NIT no es numerico</InArgument>
-                              </Assign.Value>
-                            </Assign>
-                          </Sequence>
+                          <ui:Comment sap:VirtualizedContainerService.HintSize="333.6,56" sap2010:WorkflowViewState.IdRef="Comment_6" Text="// Linea de la fila actual ya reportada" />
                         </If.Else>
                       </If>
                     </Sequence>
-                  </TryCatch.Try>
-                  <TryCatch.Catches>
-                    <Catch x:TypeArguments="s1:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_20">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg1:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ActivityAction x:TypeArguments="s1:Exception">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="s1:Exception" Name="exception" />
-                        </ActivityAction.Argument>
-                        <Sequence sap:VirtualizedContainerService.HintSize="304,249.6" sap2010:WorkflowViewState.IdRef="Sequence_139">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg1:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_129">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="x:Boolean">[vBooValidacion]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="x:Boolean">False</InArgument>
-                            </Assign.Value>
-                          </Assign>
-                          <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_130">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="x:String">[in_StrExcepcion]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="x:String">excepción: Estructura de linea incorrecta</InArgument>
-                            </Assign.Value>
-                          </Assign>
-                        </Sequence>
-                      </ActivityAction>
-                    </Catch>
-                  </TryCatch.Catches>
-                </TryCatch>
-              </If.Then>
-              <If.Else>
-                <Sequence DisplayName="Fila con estructura incorrecta" sap:VirtualizedContainerService.HintSize="304,252.8" sap2010:WorkflowViewState.IdRef="Sequence_147">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg1:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Assign hubo error en la infor" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_132">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Boolean">[vBooValidacion]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <Assign DisplayName="Assign se reporta el error especifico" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_133">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:String">[in_StrExcepcion]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">["Fila en archivo multicash cambio su estructura: debe tener 35 ;"]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                </Sequence>
-              </If.Else>
-            </If>
-            <If Condition="[vBooValidacion=False And Not in_StrExcepcion=&quot;&quot;]" DisplayName="If ¿hubo excepcion en la fila?" sap:VirtualizedContainerService.HintSize="904,888.8" sap2010:WorkflowViewState.IdRef="If_78">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg1:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <If.Then>
-                <Sequence DisplayName="Reportar error en excel multicash" sap:VirtualizedContainerService.HintSize="512,739.2" sap2010:WorkflowViewState.IdRef="Sequence_143">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg1:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;&quot;, &quot;&quot;, &quot;&quot;,in_StrHoja,&quot;excepción: &quot;+in_StrExcepcion,&quot;&quot;}]" DataTable="[in_dtFiltradaCuentas]" DisplayName="Formar tabla " sap:VirtualizedContainerService.HintSize="470.4,22.4" sap2010:WorkflowViewState.IdRef="AddDataRow_24" />
-                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="470.4,584" sap2010:WorkflowViewState.IdRef="TryCatch_21">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg1:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <TryCatch.Try>
-                      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,352.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_17" Visible="False" WorkbookPath="[in_StrArchivoMulticash]">
-                        <ui:ExcelApplicationScope.Body>
-                          <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                            <ActivityAction.Argument>
-                              <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                            </ActivityAction.Argument>
-                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,243.2" sap2010:WorkflowViewState.IdRef="Sequence_140">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg1:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Red]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_17" Range="[&quot;B&quot;+(in_dt001.Rows.IndexOf(row)+1).ToString]" SheetName="[in_StrHoja]" />
-                              <ui:ExcelWriteCell Cell="[&quot;B&quot;+(in_dt001.Rows.IndexOf(row)+1).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_17" SheetName="[in_StrHoja]" Text="[in_StrExcepcion]" />
-                            </Sequence>
-                          </ActivityAction>
-                        </ui:ExcelApplicationScope.Body>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg1:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:ExcelApplicationScope>
-                    </TryCatch.Try>
-                    <TryCatch.Catches>
-                      <Catch x:TypeArguments="s1:Exception" sap:VirtualizedContainerService.HintSize="436.8,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_21">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg1:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ActivityAction x:TypeArguments="s1:Exception">
-                          <ActivityAction.Argument>
-                            <DelegateInArgument x:TypeArguments="s1:Exception" Name="exception" />
-                          </ActivityAction.Argument>
-                          <Sequence sap:VirtualizedContainerService.HintSize="241.6,68.8" sap2010:WorkflowViewState.IdRef="Sequence_142">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg1:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="KillProcess_9" ProcessName="EXCEL.EXE" />
-                            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_18" Visible="False" WorkbookPath="[in_StrArchivoMulticash]">
-                              <ui:ExcelApplicationScope.Body>
-                                <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                                  <ActivityAction.Argument>
-                                    <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                                  </ActivityAction.Argument>
-                                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,243.2" sap2010:WorkflowViewState.IdRef="Sequence_141">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      </scg1:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Red]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_18" Range="[&quot;C&quot;+(in_dt001.Rows.IndexOf(row)+1).ToString]" SheetName="[in_StrHoja]" />
-                                    <ui:ExcelWriteCell Cell="[&quot;C&quot;+(in_dt001.Rows.IndexOf(row)+1).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_18" SheetName="[in_StrHoja]" Text="[in_StrExcepcion]" />
-                                  </Sequence>
-                                </ActivityAction>
-                              </ui:ExcelApplicationScope.Body>
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                </scg1:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                            </ui:ExcelApplicationScope>
-                          </Sequence>
-                        </ActivityAction>
-                      </Catch>
-                    </TryCatch.Catches>
-                  </TryCatch>
-                </Sequence>
-              </If.Then>
-              <If.Else>
-                <Sequence DisplayName="Buscar si la linea ya fue reportada" sap:VirtualizedContainerService.HintSize="348,394.4" sap2010:WorkflowViewState.IdRef="Sequence_145">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg1:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[in_dtArchivoFiltrado]" DisplayName="For Each Row archivo bancos organizado" sap:VirtualizedContainerService.HintSize="306.4,208.8" sap2010:WorkflowViewState.IdRef="ForEachRow_7">
-                    <ui:ForEachRow.Body>
-                      <ActivityAction x:TypeArguments="sd:DataRow">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="raw" />
-                        </ActivityAction.Argument>
-                        <If Condition="[raw(0).ToString=Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(1) and convert.ToDouble(raw(1).ToString)=convert.ToDouble(Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(10)) and raw(2).ToString=Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(3) and raw(3).ToString=Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(16)]" DisplayName="If ¿se encuentra en archivo organizado info fila de multicash" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_76">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg1:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <If.Then>
-                            <Sequence DisplayName="Linea ya fue agregada" sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_144">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg1:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <Assign DisplayName="Assign linea ya reportada" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_131">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:Boolean">[vBooLineaReportada]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                                </Assign.Value>
-                              </Assign>
-                              <ui:Break sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="Break_2" />
-                            </Sequence>
-                          </If.Then>
-                          <If.Else>
-                            <ui:Comment sap:VirtualizedContainerService.HintSize="334,55" sap2010:WorkflowViewState.IdRef="Comment_5" Text="// Linea ya existente" />
-                          </If.Else>
-                        </If>
-                      </ActivityAction>
-                    </ui:ForEachRow.Body>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg1:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:ForEachRow>
-                  <If Condition="[vBooLineaReportada=False]" DisplayName="If ¿linea de multicash no ha sido reportada?" sap:VirtualizedContainerService.HintSize="306.4,52.8" sap2010:WorkflowViewState.IdRef="If_77">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg1:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <If.Then>
-                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(1),Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(10), Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(3), Split(row(0).ToString.Replace(&quot; &quot;,&quot;&quot;),&quot;;&quot;)(16),in_StrHoja,&quot;&quot;,&quot;&quot;}]" DataTable="[in_dtFiltradaCuentas]" DisplayName="Agrega info a tabla organizada" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_25" />
-                    </If.Then>
-                    <If.Else>
-                      <ui:Comment sap:VirtualizedContainerService.HintSize="334,55" sap2010:WorkflowViewState.IdRef="Comment_6" Text="// Linea de la fila actual ya reportada" />
-                    </If.Else>
-                  </If>
-                </Sequence>
-              </If.Else>
-            </If>
-          </Sequence>
-        </ActivityAction>
-      </ui:ForEachRow.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg1:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg1:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:ForEachRow>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </ActivityAction>
+          </ui:ForEachRow.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg1:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:ForEachRow>
+      </If.Then>
+      <If.Else>
+        <ui:Comment sap:VirtualizedContainerService.HintSize="333.6,56" sap2010:WorkflowViewState.IdRef="Comment_7" Text="// No se han ingresado lineas" />
+      </If.Else>
+    </If>
   </Sequence>
 </Activity>
