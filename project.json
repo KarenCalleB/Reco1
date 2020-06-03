@@ -3,6 +3,7 @@
   "description": "CFGI Nontransactional Robot Framework",
   "main": "Main.xaml",
   "dependencies": {
+    "Fourier": "[1.0.1]",
     "Microsoft.Activities": "1.0.1",
     "Microsoft.Activities.Extensions": "2.0.6.9",
     "UiPath.Credentials.Activities": "1.1.6479.13204",
